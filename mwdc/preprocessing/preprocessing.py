@@ -302,6 +302,7 @@ def data_preprocessing(data_path, variables):
     rdata_daily_np_array = np.array(rdata_daily.to_array())
   else:
     rdata_daily_np_array = np.array(rdata_daily[variables].to_array())
+  print(rdata_daily_np_array.shape)
   rdata_daily_np_array_T = rdata_daily_np_array.transpose(1,0,2,3)   # transform the dailt data from (7, 365, 41, 41) to (365, 7, 41, 41)
   overall_mean = np.nanmean(rdata_daily_np_array_T[:, :, :, :])
   for i in range(rdata_daily_np_array_T.shape[0]):

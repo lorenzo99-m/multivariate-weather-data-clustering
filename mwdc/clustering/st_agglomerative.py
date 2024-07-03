@@ -83,6 +83,7 @@ def st_agglomerative(input_path, input, variables,n, K, affinity, linkage, p, tr
       #High dimension reduction
       norm_data = pca1(input_path,n)
 
+  print(norm_data)
 
   def plot_dendrogram(model, **kwargs):
     # Create linkage matrix and then plot the dendrogram
@@ -118,7 +119,7 @@ def st_agglomerative(input_path, input, variables,n, K, affinity, linkage, p, tr
   for metric in affinity_metrics:
     for alg_name, alg in clustering_algorithms:
       if alg == 'ward' and metric != 'euclidean': continue
-      model = AgglomerativeClustering(n_clusters=K, affinity=metric, linkage=alg, compute_distances=True)
+      model = AgglomerativeClustering(n_clusters=K, metric=metric, linkage=alg, compute_distances=True)
   
       #model.fit(data)
       y_model = model.fit(norm_data)
